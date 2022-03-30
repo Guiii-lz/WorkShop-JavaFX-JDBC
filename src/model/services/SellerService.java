@@ -7,21 +7,22 @@ import model.dao.SellerDao;
 import model.entities.Seller;
 
 public class SellerService {
- 
+
 	private SellerDao dao = DaoFactory.createSellerDao();
-	public List<Seller> findAll(){
-		
+
+	public List<Seller> findAll() {
+
 		return dao.findAll();
 	}
-	
+
 	public void saveOrUpadte(Seller department) {
-		if(department.getId() == null) {
+		if (department.getId() == null) {
 			dao.insert(department);
-		}
-		else {
+		} else {
 			dao.update(department);
 		}
 	}
+
 	public void remove(Seller obj) {
 		dao.deleteById(obj.getId());
 	}

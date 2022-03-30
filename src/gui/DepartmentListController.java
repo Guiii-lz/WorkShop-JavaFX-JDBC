@@ -153,25 +153,21 @@ public class DepartmentListController implements Initializable, DataChangeListen
 		});
 	}
 
-	
 	private void removeEntity(Department obj) {
-	  Optional<ButtonType> result =	Alerts.showConfirmation("Confirmation", "Are you sure to delete ?");
-	  
-	  if(result.get() == ButtonType.OK) {
-		  if(service == null) {
-			  throw new IllegalStateException("Service was null");
-		  }
-		  try {
-			  service.remove(obj);
-			  updateTableView();
-		  }
-		  catch(DbIntegrityException e) {
-			  Alerts.showAlert("Error removing Object", null, e.getMessage(), AlertType.ERROR);
-		  }
-		  
-	  }
+		Optional<ButtonType> result = Alerts.showConfirmation("Confirmation", "Are you sure to delete ?");
+
+		if (result.get() == ButtonType.OK) {
+			if (service == null) {
+				throw new IllegalStateException("Service was null");
+			}
+			try {
+				service.remove(obj);
+				updateTableView();
+			} catch (DbIntegrityException e) {
+				Alerts.showAlert("Error removing Object", null, e.getMessage(), AlertType.ERROR);
+			}
+
+		}
 	}
-	
-	
 
 }

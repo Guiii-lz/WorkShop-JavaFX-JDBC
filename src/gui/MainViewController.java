@@ -45,11 +45,11 @@ public class MainViewController implements Initializable {
 			controller.updateTableView();
 		});
 	}
-	
 
 	@FXML
 	public void onMenuItemAboutAction() {
-		loadView("/gui/About.fxml", x -> {});
+		loadView("/gui/About.fxml", x -> {
+		});
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVbox.getChildren());
-			
+
 			T controller = loader.getController();
 			initializingAction.accept(controller);
 
